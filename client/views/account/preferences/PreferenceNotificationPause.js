@@ -40,7 +40,6 @@ const PreferenceNotificationPauseField = ({ onChange, commitRef }) => {
 		return options;
 	}, [t, userNotificationPausedUntil]);
 
-	
 	const handleChoosePauseOption = (e) => {
 		const choice = e.target.value;
 		let pauseEndTime;
@@ -64,23 +63,23 @@ const PreferenceNotificationPauseField = ({ onChange, commitRef }) => {
 		}
 		setPauseTime(pauseEndTime);
 
-		handleNotificationPausedUntil(moment(pauseEndTime).format('YYYY-MM-DD HH:mm:ss'))
-	}
+		handleNotificationPausedUntil(moment(pauseEndTime).format('YYYY-MM-DD HH:mm:ss'));
+	};
 
 	const handleCustomTimeChange = (e) => {
-		setPauseTime(e.target.value)
-		handleNotificationPausedUntil(moment(e.target.value).format('YYYY-MM-DD HH:mm:ss'))
-	}
+		setPauseTime(e.target.value);
+		handleNotificationPausedUntil(moment(e.target.value).format('YYYY-MM-DD HH:mm:ss'));
+	};
 
 	const handleStartNotifications = (e) => {
 		if (!e.target.checked) {
-			setPauseTime(null)
-			handleNotificationPausedUntil(null)
+			setPauseTime(null);
+			handleNotificationPausedUntil(null);
 		} else {
-			setPauseTime(userNotificationPausedUntil)
-			handleNotificationPausedUntil(userNotificationPausedUntil)
+			setPauseTime(userNotificationPausedUntil);
+			handleNotificationPausedUntil(userNotificationPausedUntil);
 		}
-	}
+	};
 
 	return (
 		<Field>
@@ -121,21 +120,19 @@ const PreferenceNotificationPauseField = ({ onChange, commitRef }) => {
 							/>
 							<Field.Label htmlFor={'PAUSE_NOTIFICATION_OPTION-custom'}>{t('Choose Custom Time')}</Field.Label>
 							{customTimeActive && <Box style={{ marginLeft: 10 }}>
-									<input
-										type='datetime-local'
-										onChange={handleCustomTimeChange}
-									/>
-								</Box>}
+								<input
+									type='datetime-local'
+									onChange={handleCustomTimeChange}
+								/>
+							</Box>}
 						</Box>
 						{pauseTime && <Box>
-								<p>
-									Notifications will be paused till {moment(pauseTime).format('DD-MMM-YYYY HH:mm:ss')}
-								</p>
-							</Box>}
+							<p>
+								Notifications will be paused till {moment(pauseTime).format('DD-MMM-YYYY HH:mm:ss')}
+							</p>
+						</Box>}
 					</Box>
-
 				</>}
-
 			</Field.Row>
 		</Field>
 	);
