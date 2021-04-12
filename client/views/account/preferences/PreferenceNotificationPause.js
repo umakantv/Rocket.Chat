@@ -19,7 +19,7 @@ const PreferenceNotificationPauseField = ({ onChange, commitRef }) => {
 	const [customTimeActive, setCustomTimeActive] = useState(false);
 	const [pauseTime, setPauseTime] = useState(userNotificationPausedUntil || null);
 
-	const { values, handlers, commit } = useForm({
+	const { handlers, commit } = useForm({
 		notificationPausedUntil: userNotificationPausedUntil,
 	}, onChange);
 
